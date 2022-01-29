@@ -1,5 +1,8 @@
 from . import app
 import urllib.request, json
+from models import news
+
+News = news.News
 
 api_key = app.config['NEWS_API_KEY']
 
@@ -24,13 +27,12 @@ def get_news():
 
 def process_results(news_list):
     '''
-    Function  that processes the movie result and transform them to a list of Objects
+    Function  that processes the news result and transform them to a list of Objects
 
     Args:
-        movie_list: A list of dictionaries that contain movie details
-
+        news_list: A list of dictionaries that contain news article details
     Returns :
-        movie_results: A list of movie objects
+        news_results: A list of news objs
     '''
     news_results = []
 
@@ -41,8 +43,8 @@ def process_results(news_list):
         category = new_article.get('category')
         country = new_article.get('country')
 
-        # if poster:
-        #     movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
-        #     movie_results.append(movie_object)
+    
+        news_obj = News(id,name,url,category,country)
+        news_results.append(news_obj)
 
     return news_results
