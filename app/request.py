@@ -1,24 +1,26 @@
-from . import app
+from app import app
 import urllib.request, json
-from models import news
+from .models import news
 
 News = news.News
 
 api_key = app.config['NEWS_API_KEY']
+main_url = app.config['NEWS_API_BASE_URL']
 
-index_url = "https://newsapi.org/v2/top-headlines/sources?apiKey={api_key}"
 
 # function to get the new
 def get_news():
     
+    index_url = main_url.format(api_key)
+
     with urllib.request.urlopen(index_url) as url:
         get_news_data = url.read()
         news_reponse = json.loads(get_news_data)
 
         news_results = None
 
-        if news_reponse['results']:
-            news_results_list = news_reponse['results']
+        if news_reponse['sources']:
+            news_results_list = news_reponse['sources']
             news_results = process_results(news_results_list)
 
     return news_results
