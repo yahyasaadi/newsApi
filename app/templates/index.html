@@ -1,3 +1,5 @@
+{% import 'macros.html' as macro%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,12 @@
 </head>
 <body>
     {% block content %}
+
+        <!-- Displaying the news -->
+        <h3>News</h3>
+        <ul>
+            {{ macro.displayNewsList(temp_NewsList) }}
+        </ul>
     {% endblock %}
 </body>
 </html>
