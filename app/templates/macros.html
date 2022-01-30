@@ -1,0 +1,11 @@
+{% macro displayNewsList(news_list) %}
+
+    {% for artcile in news_list %}
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+            <li class="text-center">
+               {{ artcile.name|truncate(10)}}
+            </li>
+        </div>
+    {% endfor %}
+    
+{% endmacro %}
