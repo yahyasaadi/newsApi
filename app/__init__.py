@@ -1,13 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask
+from .config import DevConfig
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config = True)
 
+# Setting up config settinga
+app.config.from_object(DevConfig)
+app.config.from_pyfile('config.py')
 
-@app.route('/')
-def home():
-    title = "News API App"
-    para = "It is working for now"
-    return render_template('index.html', temp_title=title, temp_para = para)
-
-
+from app import views
 
