@@ -5,6 +5,12 @@
             <li class="text-center">
                {{ artcile.name|truncate(10)}}
             </li>
+            <li class="text-center">
+                <a href="{{ artcile.url}}">News Link</a>
+             </li>
+             <li class="text-center">
+                {{ artcile.country}}
+             </li>
         </div>
     {% endfor %}
     
