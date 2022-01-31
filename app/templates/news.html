@@ -2,7 +2,12 @@
 
 
 {% block content %}
-    {% for artcile in news_results %}
+    <!-- {% for artcile in news_results %}
         <p>{{ artcile.name }}</p>
-    {% endfor }
+        <p>{{ artcile.url }}</p>
+        <p>{{ artcile.country }}</p>
+    {% endfor } -->
+    <p>{{ artcile.name }}</p>
+    <p>{{ artcile.url }}</p>
+    <p>{{ artcile.country }}</p>
 {% endblock %}
